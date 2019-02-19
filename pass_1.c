@@ -2590,7 +2590,7 @@ int parse_directive(void) {
                        return FAILED;
                      }
                      sj->next = NULL;
-                     sprintf(sj->name, "%s.%s", si->name, sti->name);
+                     snprintf(sj->name, sizeof(sj->name)-1, "%s.%s", si->name, sti->name);
                      sj->size = 0;
                      
                      if (sl != NULL)
@@ -2606,9 +2606,9 @@ int parse_directive(void) {
                   }
                   sj->next = NULL;
                   if (arr == 1)
-                     sprintf(sj->name, "%s.%s", si->name, sti->name);
+                     snprintf(sj->name, sizeof(sj->name)-1, "%s.%s", si->name, sti->name);
                   else
-                     sprintf(sj->name, "%s.%i.%s", si->name, j + 1, sti->name);
+                     snprintf(sj->name, sizeof(sj->name)-1, "%s.%i.%s", si->name, j + 1, sti->name);
                   sj->size = sti->size;
                   
                   if (sl != NULL)

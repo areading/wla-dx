@@ -2134,7 +2134,7 @@ int generate_sizeof_label_definitions(void) {
       return FAILED;
     }
 
-    sprintf(l->name, "_sizeof_%s", labels[j]->name);
+    snprintf(l->name, sizeof(l->name)-1, "_sizeof_%s", labels[j]->name);
     l->status = LABEL_STATUS_DEFINE;
     l->address = size;
     l->base = 0;
