@@ -98,7 +98,7 @@ char *final_name = NULL, *asm_name = NULL, ext_incdir[MAX_NAME_LENGTH + 1];
 
 
 int main(int argc, char *argv[]) {
-  int parse_flags_result;
+  int parse_flags_result = FAILED;
   int n_ctr = 0;
 
   
