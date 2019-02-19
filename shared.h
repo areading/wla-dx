@@ -2,6 +2,10 @@
 #ifndef _SHARED_H
 #define _SHARED_H
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 /* want to use longer strings and labels? change this - PS. it doesn't contain the null terminator */
 #define MAX_NAME_LENGTH 255
 

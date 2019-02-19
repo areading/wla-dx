@@ -47,8 +47,12 @@ if (UNIX)
 endif (UNIX)
 
 if ((CMAKE_C_COMPILER_ID MATCHES "Clang") OR (CMAKE_C_COMPILER_ID MATCHES "GNU"))
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ansi -pedantic-errors -Wall -Wextra")
+    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors -Wall -Wextra")
     string(REPLACE "-O2" "-O3" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+
+    if (NOT (GDB_DEBUGGING OR WLA_DEBUG OR WLALINK_DEBUG OR (CMAKE_BUILD_TYPE MATCHES "Debug")))
+        SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-result")
+    endif ()
 endif ()
 
 # --- Tell MSVC to STFU about _CRT_SECURE_NO_WARNINGS
